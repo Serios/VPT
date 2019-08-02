@@ -42,28 +42,44 @@ By defalut the sensor will return all data scraped for the bus stop. This includ
 * schedules - Schedule times for diffrent lines comming to the stop. See bellow what kind of information this data contains.
 
 By setting `show_mode` property you can control what data is scraped/returned. Available options are:
+
 `all` - returns both live data and schedules
+
 `live` - returns only live data 
+
 `schedule` - returns only schedule times
 
 #### Live data
 This contains:
+
 Vehicle type - Bus or Trolley 
+
 Line number 
+
 Next schedule time - at which the vehicle should be on the stop
+
 Vehicle delay - from the schedule time at which ariving to the stop
+
 Vehicle extras - like airconditioning, wheelcheer access, etc.
+
 Minutes left = before vehicle arrival at the stop based on the delay from schedule,
+
 Distance of the vehicle - distance left to the bus stop.
+
+
 
 Showing live data will use `interval` option to scrape https://varnatraffic.com website each N seconds for data
 
 #### Schedule times
 This contains:
+
 Line number 
+
 Next schedule times - The times (ahead from last scrape) at which the vehicles on this lines should be on the stop.
 
-Showing `schedule` only don't use `interval` option. Instead the data is scraped on predefined time intervals based on `max_schedule` option value. Thus reducing request to https://varnatraffic.com website to only a couple a day
+
+
+Showing `schedule` only don't use `interval` option. Instead the data is scraped on predefined time intervals based on `max_schedule` option value. Thus reducing request to https://varnatraffic.com website to only a couple of times a day
 
 #### Limiting the number of lines for wich information is returned (both Live and Schedule)
 By default the sensor will return data for all the lines that are comming to the bus stop. If you don't want that, and need only data for some lines, to be returned, you can specify the line numbers.
@@ -76,6 +92,7 @@ The syntax is simple:
 ```
 Important!!!
 There are some special line numbers for which https://varnatraffic.com website assign diffrent number than the actual one shown on the bus and use some internal logic to track and show data. Bellow you will find the list with the line number and the actual line number you need to set, if you want to track this line.
+
 | Line number (shown on the bus) | Internal number (which you must set) |
 |----|------|
 | 17a | 117 |
@@ -86,7 +103,13 @@ There are some special line numbers for which https://varnatraffic.com website a
 
 
 #### Limiting the number of schedule times
-Returning all times on which the vehicle should be on the stop trough the day is nonsence. This will overflow the sensor/card with data, thus by default this is set to 10 results. You can increase/decrease thi value by your likings.
+Returning all times on which the vehicle should be on the stop trough the day is nonsence. This will overflow the sensor/card with data, thus by default this is set to 10 results. You can increase/decrease this value by your likings.
+
+
+### Getting bus stop id
+To get the bus stop ID you need to go to https://varnatraffic.com and find your desired bus stop by clicking on the map or by typing it's name in the search box. After that the page will reload with the following url: https://varnatraffic.com/Station/Index/`StopId` where StopId will be some number for example https://varnatraffic.com/Station/Index/762
+This is the ID of the desired bus stop
+
 
 ### Some config examples
 
