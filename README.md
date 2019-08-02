@@ -23,7 +23,7 @@ Define the sensor in your yaml file with the following configuration parameters:
 | stopName | string | optional |  | What is the name of the stop. This will be shown as card title |
 | show_mode | string | optional | all | What data to be scraped/shown in the card. See [Showing information](#showing-different-types-of-information) |
 | max_schedule | int | optional | 10 | Numer of shedules times to be returned. Used in Schedules information. See [Showing information](#showing-different-types-of-information) |
-| interval | int | optional | 30 | How offten the sensor shoud scrape for data (in seconds). Note: It is not advisible to put value bellow 10 |
+| interval | int | optional | 30 | How offten the sensor shoud scrape for data (in seconds). Note: It is not advisible to set value bellow 10 |
 | monitored_lines | list | optional |  | Which lines, comming trough the bus stop, you want to track. See [Showing information](#showing-different-types-of-information) |
 
 Example of basic config
@@ -36,7 +36,7 @@ Example of basic config
 
 ![VPT-Card Lovelace example](https://github.com/Serios/VPT-Card/blob/master/vpt_card_preview.jpg)
 
-###Showing different types of information
+### Showing different types of information
 By defalut the sensor will return all data scraped for the bus stop. This include:
 * live data - lines comming to the bus stop at this moment provided by vehicle tracker device. See bellow what kind of information this data contains.
 * schedules - Schedule times for diffrent lines comming to the stop. See bellow what kind of information this data contains.
@@ -88,7 +88,7 @@ There are some special line numbers for which https://varnatraffic.com website a
 #### Limiting the number of schedule times
 Returning all times on which the vehicle should be on the stop trough the day is nonsence. This will overflow the sensor/card with data, thus by default this is set to 10 results. You can increase/decrease thi value by your likings.
 
-###Some config examples
+### Some config examples
 
 Basic config:
 ```yaml
