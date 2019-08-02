@@ -1,0 +1,8 @@
+{
+  "domain": "varna_public_transport",
+  "name": "Varna Public Transport",
+  "documentation": "https://github.com/Serios/VPT/",
+  "requirements": [],
+  "dependencies": [],
+  "codeowners": ["@Serios"]
+}
