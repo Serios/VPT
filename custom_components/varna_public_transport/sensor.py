@@ -161,6 +161,9 @@ class VarnaTrafikTransportSensor(Entity):
                           
                           attr['lines'] = lines_count
                       i += 1
+                else:
+                    attr['stop_lines'] = {}
+                    attr['lines'] = 0
             
             if self._mode == 'schedule' or self._mode == 'all':
                 
@@ -201,6 +204,9 @@ class VarnaTrafikTransportSensor(Entity):
                               
                               attr['lines_schedules'] = schedules_lines_count
                           i += 1
+                    else:
+                        attr['stop_lines_schedules'] = {}
+                        attr['lines_schedules'] = 0
             
             _LOGGER.debug(attr)
             return attr
