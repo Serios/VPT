@@ -1,8 +1,10 @@
 # NOTE
-This component is no longer working, since varnatraffic.com website stopped its info support for the public transport for city of Varna due to disinterest on the part of the municipality. Тhe municipality has developed their own api and website which are underdeveloped - lacking even half the information and functions of varnatraffic.com. Until municipality API don't get updated 
+~~This component is no longer working, since varnatraffic.com website stopped its info support for the public transport for city of Varna due to disinterest on the part of the municipality. Тhe municipality has developed their own api and website which are underdeveloped - lacking even half the information and functions of varnatraffic.com. Until municipality API don't get updated 
 to give proper, full and exact information I don't see any point of upgrading the component to use their API. 
 
-The code of the component will stay at GitHub for future reference and eventualy may be updated to work again.
+The code of the component will stay at GitHub for future reference and eventualy may be updated to work again.~~
+
+Apparently municipality of Varna sign a contract with varnatraffic.com and now services have been restored. How long this will last, nobody can tell, but for now this component is working again!
 
 # VPT
 Varna Public Transport custom component for Home Assistant
