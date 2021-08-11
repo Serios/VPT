@@ -4,7 +4,7 @@ VarnaTrafik sensor to query events for a specified stop.
 import asyncio
 import logging
 from datetime import timedelta, datetime
-import requests
+import aiohttp
 import json
 import voluptuous as vol
 
@@ -83,6 +83,7 @@ class VarnaTrafikTransportSensor(Entity):
         self._icon = DEFAULT_ICON
         self._hass = hass
         self._monitored_lines = monitored_lines
+        self._session = async_get_clientsession(self._hass)		
 
     @property
     def name(self):
@@ -229,6 +230,7 @@ class VarnaTrafikTransportSensorData:
         self._delay = interval
         self._mode = show_mode
         self._max_results = max_schedule
+        self._session = async_get_clientsession(self._hass)
 
     async def update_devices(self):
         """Update all devices/sensors."""
@@ -286,18 +288,20 @@ class VarnaTrafikTransportSensorData:
         params['stationId'] = self._stopid
         params['format'] = 'json'
         
-        response = requests.get(_RESOURCE, params, timeout=20)
-     
+        async with self._session.get(_RESOURCE, params=params, timeout=20) as response:
+          status = response.status
+          response = await response.json()
+        #response = requests.get(_RESOURCE, params, timeout=20)
+        
         # No valid request, throw error
-        if response.status_code != 200:
-            _LOGGER.error("Bus stop update error! API response " + str(response.status_code))
+        if status != 200:
+            _LOGGER.error("Bus stop update error! API response " + str(status))
             self.state = None
             self._data = None
             self._delay = 20
         else:
             # Valid request, return data
-            # Parse the result as a JSON object
-            result = response.json()
+            result = response
             
             self.state = 1
             self._data = result
