@@ -4,5 +4,6 @@
   "documentation": "https://github.com/Serios/VPT/",
   "requirements": [],
   "dependencies": [],
+  "version": "0.4",
   "codeowners": ["@Serios"]
 }
