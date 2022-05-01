@@ -106,7 +106,7 @@ class VarnaTrafikTransportSensor(Entity):
         return False
 
     @property
-    def device_state_attributes(self):
+    def extra_state_attributes(self):
         """Return the state attributes."""
         attr = {}
         attr["StopName"] = self._stopname
