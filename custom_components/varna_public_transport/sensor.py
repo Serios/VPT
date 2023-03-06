@@ -44,7 +44,7 @@ PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_LINES, default=None): vol.All(cv.ensure_list, [cv.positive_int]),
 })
 
-@asyncio.coroutine
+
 async def async_setup_platform(hass, config, async_add_devices, discovery_info=None):
 
     name = config.get(CONF_NAME)
@@ -242,7 +242,7 @@ class VarnaTrafikTransportSensorData:
                     tasks.append(dev.async_update_ha_state())
 
             if tasks:
-                await asyncio.wait(tasks)
+                await asyncio.gather(*tasks)
 
     async def schedule_update(self, second=10):
         """Schedule an update after seconds."""
@@ -279,7 +279,7 @@ class VarnaTrafikTransportSensorData:
         async_track_point_in_utc_time(self._hass, self.async_update, nxt)
         
 
-    @asyncio.coroutine
+    
     async def async_update(self, *_):
         """Get the latest data from varnatraffic.com"""
         _LOGGER.debug("Bus stop update for stop id:" + self._stopid)
